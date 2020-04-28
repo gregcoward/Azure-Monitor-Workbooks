@@ -4,7 +4,7 @@
     {
       "type": 1,
       "content": {
-        "json": "## F5 BIG-IP System Insights"
+        "json": "## F5 BIG-IP System Metrics"
       },
       "name": "text - 2"
     },
@@ -13,9 +13,80 @@
       "content": {
         "version": "KqlParameterItem/1.0",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "parameters": [
+          {
+            "id": "2cb5690b-61f2-47f0-a020-5c59e6783621",
+            "version": "KqlParameterItem/1.0",
+            "name": "DefaultSubscription_Internal",
+            "type": 1,
+            "isRequired": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| take 1\r\n| project subscriptionId",
+            "crossComponentResources": [
+              "value::selected"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "77b8a63c-f0cd-475f-ad87-7939d8c13547",
+            "version": "KqlParameterItem/1.0",
+            "name": "Subscription",
+            "type": 6,
+            "isRequired": true,
+            "query": "summarize by subscriptionId\r\n| project value = strcat(\"/subscriptions/\", subscriptionId), label = subscriptionId, selected = iff(subscriptionId =~ '{DefaultSubscription_Internal}', true, false)\r\n",
+            "crossComponentResources": [
+              "value::selected"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [
+                "value::1"
+              ]
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "0565232c-bc82-44db-ac13-b9d7c1a90348",
+            "version": "KqlParameterItem/1.0",
+            "name": "Workspace",
+            "type": 5,
+            "isRequired": true,
+            "query": "where type =~ 'microsoft.operationalinsights/workspaces'\r\n| project id",
+            "crossComponentResources": [
+              "{Subscription}"
+            ],
+            "value": "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws",
+            "typeSettings": {
+              "additionalResourceOptions": []
+            },
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "5273ece9-ebfd-479f-9d94-1463360b302a",
+            "version": "KqlParameterItem/1.0",
+            "name": "HostName",
+            "label": "Host Name",
+            "type": 2,
+            "isRequired": true,
+            "query": "F5Telemetry_AVR_CL\r\n| distinct hostname_s",
+            "crossComponentResources": [
+              "{Workspace}"
+            ],
+            "value": "bigipazure2.aserracorp.com",
+            "typeSettings": {
+              "additionalResourceOptions": []
+            },
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces"
+          },
           {
             "id": "f260e834-0fd6-4d4f-8741-4cb24968a0c3",
             "version": "KqlParameterItem/1.0",
@@ -23,7 +94,7 @@
             "type": 4,
             "isRequired": true,
             "value": {
-              "durationMs": 43200000
+              "durationMs": 172800000
             },
             "typeSettings": {
               "selectableValues": [
@@ -103,24 +174,6 @@
             },
             "jsonData": "[\r\n    { \"value\": \"1\", \"label\": \"1\" },\r\n    { \"value\": \"5\", \"label\": \"5\", \"selected\":true },\r\n    { \"value\": \"10\", \"label\": \"10\" },\r\n    { \"value\": \"15\", \"label\": \"15\" },\r\n    { \"value\": \"30\", \"label\": \"30\" },\r\n    { \"value\": \"45\", \"label\": \"45\" },\r\n    { \"value\": \"60\", \"label\": \"60\" },\r\n    { \"value\": \"90\", \"label\": \"90\" }\r\n]",
             "resourceType": "microsoft.insights/components"
-          },
-          {
-            "id": "5273ece9-ebfd-479f-9d94-1463360b302a",
-            "version": "KqlParameterItem/1.0",
-            "name": "HostName",
-            "label": "Host Name",
-            "type": 2,
-            "isRequired": true,
-            "query": "F5Telemetry_AVR_CL \r\n| distinct hostname_s",
-            "crossComponentResources": [
-              "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
-            ],
-            "value": "bigip.aserracorp.com",
-            "typeSettings": {
-              "additionalResourceOptions": []
-            },
-            "queryType": 0,
-            "resourceType": "microsoft.operationalinsights/workspaces"
           }
         ],
         "style": "pills",
@@ -138,7 +191,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "table",
         "gridSettings": {
@@ -637,6 +690,12 @@
               }
             }
           ],
+          "sortBy": [
+            {
+              "itemKey": "$gen_heatmap_CPU_1",
+              "sortOrder": 1
+            }
+          ],
           "labelSettings": [
             {
               "columnId": "hostname_s",
@@ -688,14 +747,19 @@
             }
           ]
         },
-        "sortBy": []
+        "sortBy": [
+          {
+            "itemKey": "$gen_heatmap_CPU_1",
+            "sortOrder": 1
+          }
+        ]
       },
       "name": "query - 13"
     },
     {
       "type": 1,
       "content": {
-        "json": "# Processor , Memory and  Disk Utilization"
+        "json": "# Processor and Memory "
       },
       "name": "text - 6"
     },
@@ -714,7 +778,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "chartSettings": {
@@ -744,7 +808,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "gridSettings": {
@@ -831,7 +895,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "chartSettings": {
@@ -843,6 +907,13 @@
         }
       },
       "name": "query - 10"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "---\r\n# Disk Utilization"
+      },
+      "name": "text - 6 - Copy"
     },
     {
       "type": 3,
@@ -860,7 +931,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "table",
         "gridSettings": {
@@ -1193,7 +1264,7 @@
             "content": {
               "version": "KqlParameterItem/1.0",
               "crossComponentResources": [
-                "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+                "{Workspace}"
               ],
               "parameters": [
                 {
@@ -1205,9 +1276,9 @@
                   "isRequired": true,
                   "query": "F5Telemetry_AVR_CL\r\n| where hostname_s == '{HostName}'\r\n| where interface_name_s startswith '1.' or interface_name_s startswith 'mg' or interface_name_s startswith '2.'\r\n| distinct interface_name_s \r\n| order by interface_name_s asc\r\n",
                   "crossComponentResources": [
-                    "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+                    "{Workspace}"
                   ],
-                  "value": "1.1",
+                  "value": null,
                   "typeSettings": {
                     "additionalResourceOptions": []
                   },
@@ -1239,7 +1310,7 @@
               "queryType": 0,
               "resourceType": "microsoft.operationalinsights/workspaces",
               "crossComponentResources": [
-                "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+                "{Workspace}"
               ],
               "visualization": "timechart",
               "gridSettings": {
@@ -1363,7 +1434,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ]
       },
       "customWidth": "50",
@@ -1384,7 +1455,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "categoricalbar"
       },
@@ -1407,7 +1478,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "sortBy": [],
@@ -1432,7 +1503,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "chartSettings": {
@@ -1472,7 +1543,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "gridSettings": {
@@ -1549,7 +1620,7 @@
         "queryType": 0,
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
-          "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws"
+          "{Workspace}"
         ],
         "visualization": "timechart",
         "gridSettings": {

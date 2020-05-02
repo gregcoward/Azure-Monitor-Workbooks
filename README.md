@@ -3,7 +3,7 @@
 ## Requirements
 * F5 Telemetry Streamaing - https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/
 * F5 Application Services 3 Extension - https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
-* Existing Azure Workspace - ** Will need to supply workspace ID and primary or secondary key.**
+* Existing Azure Workspace - Will need to supply workspace ID and primary or secondary key.
 
 ## Configuration
 In a nutshell, you will apply the AS3 declaration, (minimal.json) to configure basic TS streams, (workbook utilizes the F5Telemetry_system_CL  table) and run the three TMSH commands below to enable AVR streaming.

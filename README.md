@@ -24,7 +24,7 @@ The system metrics workbook makes use of basic AVR telemetry, (F5Telemetry_AVR_C
     HTTP -modify ltm virtual <VIRTUAL_SERVER_NAME> profiles add { telemetry-http-analytics { context all } } 
  
 ### Apply Telemetry Streaming Declaration
-    Finally, apply the [TS declaration](https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/setting-up-consumer.html#azure-ref), (azstream.json) to begin streaming telemetry data to your existing Azure log analytics workspace.  You will need to provide the workspaceID and key. Below are examples of the deployed workbook.
+Finally, apply the [TS declaration](https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/setting-up-consumer.html#azure-ref), (azstream.json) to begin streaming telemetry data to your existing Azure log analytics workspace.  You will need to provide the workspaceID and key. Below are examples of the deployed workbook.
  
  ![picture](images/f5smdark.png)  ![picture](images/f5smlight.png)  
 

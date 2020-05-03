@@ -25,4 +25,7 @@ The system metrics workbook makes use of basic AVR telemetry, (F5Telemetry_AVR_C
     TCP - modify ltm virtual <VIRTUAL_SERVER_NAME> profiles add { telemetry-tcp-analytics { context all } }}
     HTTP -modify ltm virtual <VIRTUAL_SERVER_NAME> profiles add { telemetry-http-analytics { context all } } 
  
+ Below are examples of the deployed workbook.
+ 
+ ![picture](images/f5smdark.png)  ![picture](images/f5smlight.png)  
 

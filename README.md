@@ -6,9 +6,9 @@
 * Existing Azure Workspace - Will need to supply workspace ID and primary or secondary key.
 
 ## Configuration
-In a nutshell, you will apply the AS3 declaration, (minimal.json) to configure basic TS streaming, (the sytem metrics workbook utilizes the F5Telemetry_system_CL  table) and run three TMSH commands, (shown below) to enable AVR streaming.
+In a nutshell, you will apply the [AS3 declaration](https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/event-listener.html#configure-logging-using-as3), (minimal.json) to configure basic TS streaming, (the sytem metrics workbook utilizes the F5Telemetry_system_CL  table) and run three TMSH commands, (shown below) to enable AVR streaming.
 
-Finally, apply the TS declaration, (azstream.json) to begin streaming telemetry data to your existing Azure log analytics workspace.  You will need to provide the workspaceID and key.
+Finally, apply the [TS declaration](https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/setting-up-consumer.html#azure-ref), (azstream.json) to begin streaming telemetry data to your existing Azure log analytics workspace.  You will need to provide the workspaceID and key.
 
 The system metrics workbook makes use of basic AVR telemetry, (F5Telemetry_AVR_CL)  as well as TCP and HTTP profile AVR streams.  The second two commands  create the profiles, (TCP & HTTP).  These profiles are in turn applied to virtual server(s).  If you do not have virtual servers and/or do not apply them to at least one virtual server, the workbook will show some missing info; just an FYI. 
 

@@ -58,7 +58,7 @@
             "crossComponentResources": [
               "{Subscription}"
             ],
-            "value": "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/glc-ws",
+            "value": "/subscriptions/187fa2f3-5d57-4e6a-9b1b-f92ba7adbf42/resourceGroups/glc-streaming/providers/Microsoft.OperationalInsights/workspaces/aserracorp-ws",
             "typeSettings": {
               "additionalResourceOptions": []
             },
@@ -94,7 +94,7 @@
             "type": 4,
             "isRequired": true,
             "value": {
-              "durationMs": 172800000
+              "durationMs": 14400000
             },
             "typeSettings": {
               "selectableValues": [
@@ -197,20 +197,6 @@
         "gridSettings": {
           "formatters": [
             {
-              "columnMatch": "hostname_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "version_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
               "columnMatch": "licenseReady_s",
               "formatter": 18,
               "formatOptions": {
@@ -237,20 +223,6 @@
                   "style": "decimal",
                   "useGrouping": false
                 }
-              }
-            },
-            {
-              "columnMatch": "marketingName_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "syncMode_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
               }
             },
             {
@@ -459,53 +431,11 @@
               }
             },
             {
-              "columnMatch": "logTime",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "versionBuild_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
               "columnMatch": "TimeGenerated",
               "formatter": 0,
               "formatOptions": {
                 "showIcon": true,
                 "aggregation": "Max"
-              }
-            },
-            {
-              "columnMatch": "platformId_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "Hostname",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "OS_Version",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "Build",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
               }
             },
             {
@@ -528,27 +458,6 @@
                     "text": "{0}{1}"
                   }
                 ]
-              }
-            },
-            {
-              "columnMatch": "Platform",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "Mode",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "Status",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
               }
             },
             {
@@ -813,27 +722,6 @@
         "visualization": "timechart",
         "gridSettings": {
           "formatters": [
-            {
-              "columnMatch": "hostname_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "cpu_id_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "TimeGenerated",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
             {
               "columnMatch": "CPU_Usage_per_CPU_ID",
               "formatter": 1,
@@ -1278,7 +1166,7 @@
                   "crossComponentResources": [
                     "{Workspace}"
                   ],
-                  "value": null,
+                  "value": "mgmt",
                   "typeSettings": {
                     "additionalResourceOptions": []
                   },
@@ -1313,66 +1201,6 @@
                 "{Workspace}"
               ],
               "visualization": "timechart",
-              "gridSettings": {
-                "formatters": [
-                  {
-                    "columnMatch": "interface_name_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "TimeGenerated",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "avg_counters_pkts_in_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "avg_counters_pkts_out_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "avg_counters_drops_in_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "avg_counters_drops_out_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "avg_counters_errors_in_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  },
-                  {
-                    "columnMatch": "avg_counters_errors_out_s",
-                    "formatter": 0,
-                    "formatOptions": {
-                      "showIcon": true
-                    }
-                  }
-                ]
-              },
               "tileSettings": {
                 "showBorder": false,
                 "titleContent": {
@@ -1422,7 +1250,7 @@
       "type": 3,
       "content": {
         "version": "KqlItem/1.0",
-        "query": "F5Telemetry_AVR_CL \r\n| where Module_s  == 'http'\r\n| where hostname_s == '{HostName}'\r\n| where TimeGenerated between ({TimeRange:start}..{TimeRange:end})\r\n| summarize Transactions_Per_Second = max(todouble(TPSMax_s)) by hostname_s, bin (TimeGenerated, {SampleValue}{SamplePeriod})\r\n| render timechart",
+        "query": "F5Telemetry_AVR_CL \r\n| where tolong(transactions_s) >= 0\r\n| extend tps = tolong(transactions_s )\r\n| where notempty(pool_name_s) or Entity_s == 'DeviceTraffic'\r\n| where hostname_s == '{HostName}'\r\n| where TimeGenerated between ({TimeRange:start}..{TimeRange:end})\r\n| summarize Transactions_Per_Second = max(tps) by pool_name_s, bin (TimeGenerated,{SampleValue}{SamplePeriod})",
         "size": 0,
         "aggregation": 2,
         "title": "Transactions per Second (TPS)",
@@ -1435,7 +1263,19 @@
         "resourceType": "microsoft.operationalinsights/workspaces",
         "crossComponentResources": [
           "{Workspace}"
-        ]
+        ],
+        "visualization": "unstackedbar",
+        "chartSettings": {
+          "seriesLabelSettings": [
+            {
+              "seriesName": "<empty>",
+              "label": "Device Traffic",
+              "color": "turquoise"
+            }
+          ],
+          "xSettings": {},
+          "ySettings": {}
+        }
       },
       "customWidth": "50",
       "name": "query - 8"
@@ -1546,45 +1386,6 @@
           "{Workspace}"
         ],
         "visualization": "timechart",
-        "gridSettings": {
-          "formatters": [
-            {
-              "columnMatch": "RequestSide_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "TimeGenerated",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "PacketsSent",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "PacketsReceived",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "PacketsLost",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            }
-          ]
-        },
         "chartSettings": {
           "seriesLabelSettings": [
             {
@@ -1623,45 +1424,6 @@
           "{Workspace}"
         ],
         "visualization": "timechart",
-        "gridSettings": {
-          "formatters": [
-            {
-              "columnMatch": "RequestSide_s",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "TimeGenerated",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "PacketsSent",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "PacketsReceived",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            },
-            {
-              "columnMatch": "PacketsLost",
-              "formatter": 0,
-              "formatOptions": {
-                "showIcon": true
-              }
-            }
-          ]
-        },
         "chartSettings": {
           "seriesLabelSettings": [
             {
@@ -1683,7 +1445,6 @@
       "name": "query - 11 - Copy"
     }
   ],
-  "styleSettings": {},
   "fromTemplateId": "sentinel-F5BIGIPSystemMetrics",
   "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
 }

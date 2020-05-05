@@ -1,8 +1,8 @@
 # Azure-Monitor-Workbooks
 
 ## Requirements
-* F5 Telemetry Streamaing - https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/
-* F5 Application Services 3 Extension - https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
+* F5 Telemetry Streamaing,(ver 1.10 or later) - https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/
+* F5 Application Services 3 Extension,(ver 3.18 or later)  - https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
 * Existing Azure Workspace - Will need to supply workspace ID and primary or secondary key.
 
 ## Configuration
